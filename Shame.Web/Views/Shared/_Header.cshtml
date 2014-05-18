@@ -1,0 +1,25 @@
+﻿@{
+    var ApplicationName = "Shameful";
+}
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="navbar-brand" style="padding: 2px" href="@Url.Action("Index", "Home")">
+                        <img src="@Url.Content(@"~\Content\Icons\shame-on-you.jpg")" alt="@ApplicationName" height="100%" />
+                    </a>
+                </li>
+                <li class="active"><a href="#">Fine</a></li>
+                <li><a href="#">Report</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+
+
+        </div>
+    </div>
+
+
+</nav>
