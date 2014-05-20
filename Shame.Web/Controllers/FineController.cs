@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shame.ShamefulLogic;
 using Shame.Web.Models.Fine;
 
 namespace Shame.Web.Controllers
 {
     public class FineController : Controller
     {
+        private readonly IShamefulService _shamefulService;
+
+        public FineController(IShamefulService shamefulService)
+        {
+            _shamefulService = shamefulService;
+        }
+
         //
         // GET: /Fine/
         public ActionResult Index()
@@ -32,17 +40,8 @@ namespace Shame.Web.Controllers
 
         public ActionResult _FineFeed()
         {
-            var model = new List<string>
-            {
-                "Fine",
-                "Fine",
-                "Fine",
-                "Fine",
-                "Fine",
-                "Fine",
-                "Fine",
-                "Fine"
-            };
+            var model = _shamefulService.GetFines(100, "PietPompiesDev").ToList();
+
             return View(model);
         }
         //
