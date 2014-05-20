@@ -11,5 +11,7 @@ namespace Shame.ShamefulLogic
         void NominateFine(string fine);
 
         string[] GetFines(int count, string screenName);
+
+        List<string> GetFollowers(string screenName);
     }
 }

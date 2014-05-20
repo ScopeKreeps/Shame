@@ -16,6 +16,11 @@ namespace Shame.ShamefulLogic
         public string[] GetFines(int count, string screenName) 
         {
             throw new NotImplementedException();
+        }
+
+        public List<string> GetFollowers(string screenName)
+        {
+            throw new NotImplementedException();
         }   
     }
 }

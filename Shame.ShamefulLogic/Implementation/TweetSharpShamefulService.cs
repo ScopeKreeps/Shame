@@ -33,6 +33,14 @@ namespace Shame.ShamefulLogic
             var service = GetAuthenticatedTwitterServices();
             return service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { ScreenName = screenName, Count = count }).Select(x => x.Text).ToArray();
         }
+
+        public List<string> GetFollowers(string screenName)
+        {
+            var service = GetAuthenticatedTwitterServices();
+            var options = new ListFollowersOptions {ScreenName = screenName};
+            IEnumerable<TwitterUser> followers = service.ListFollowers(options);
+            return followers.Select(x => x.Name).ToList();
+        }
    
         private TwitterService GetAuthenticatedTwitterServices()
         {
