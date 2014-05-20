@@ -12,9 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.Web", "Shame.Web\Sham
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.Web.Tests", "Shame.Web.Tests\Shame.Web.Tests.csproj", "{9C261BE5-EEF0-4CA8-8DB7-4D537FAF01BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.ShamefulLogic", "..\Shame.ShamefulLogic\Shame.ShamefulLogic.csproj", "{DE7A71CF-D2A4-4A3B-AD5D-BD76BE87D1A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.ShamefulLogic", "Shame.ShamefulLogic\Shame.ShamefulLogic.csproj", "{DE7A71CF-D2A4-4A3B-AD5D-BD76BE87D1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.ShamefulLogic.Tests", "..\Shame.ShamefulLogic.Tests\Shame.ShamefulLogic.Tests.csproj", "{5900015A-4AE3-4C96-9FAD-B58164D82319}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shame.ShamefulLogic.Tests", "Shame.ShamefulLogic.Tests\Shame.ShamefulLogic.Tests.csproj", "{5900015A-4AE3-4C96-9FAD-B58164D82319}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
