@@ -24,15 +24,7 @@ namespace Shame.Web.Controllers
             var model = new FineNominationModel
             {
                 Title = "Nominate an offender",
-                Followers = new List<string>
-                {
-                    "@Ruan",
-                    "@Farzana",
-                    "@Rayno",
-                    "@Sean",
-                    "@Leon",
-                    "@Jonathan"
-                }
+                Followers = _shamefulService.GetFollowers("@ScopeKreeps")
             };
             return View(model);
         }
