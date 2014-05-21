@@ -235,7 +235,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shame.ShamefulLogic\Shame.ShamefulLogic.csproj">
+    <ProjectReference Include="..\Shame.ShamefulLogic\Shame.ShamefulLogic.csproj">
       <Project>{de7a71cf-d2a4-4a3b-ad5d-bd76be87d1a5}</Project>
       <Name>Shame.ShamefulLogic</Name>
     </ProjectReference>
