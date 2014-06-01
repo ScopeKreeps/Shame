@@ -22,16 +22,20 @@ namespace Shame.ShamefulLogic
             _accessTokenSecret = accessTokenSecret;
         }
 
-        public void NominateFine(string fine)
+        public void NominateFine(FineModel fine)
         {
+            if (!fine.IsValid) {return;}
+
+
             var service = GetAuthenticatedTwitterServices();
-            service.SendTweet(new SendTweetOptions {Status = fine});
+            service.SendTweet(new SendTweetOptions {Status = fine.RawTweet});
         }
 
-        public string[] GetFines(int count, string screenName)
+        public List<FineModel> GetFines(int count, string screenName)
         {
-            var service = GetAuthenticatedTwitterServices();           
-            return service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { ScreenName = screenName, Count = count }).Select(x => x.Text).ToArray();
+            var service = GetAuthenticatedTwitterServices();
+            return service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { ScreenName = screenName, Count = count })
+                .Select(x => new FineModel(x.Text)).ToList();
         }
 
         public List<string> GetFollowers(string screenName)

@@ -19,14 +19,15 @@ namespace Shame.ShamefulLogic.Tests
             var shamefulService = kernel.Get<IShamefulService>();
 
             //get random string 
-            var fine = new Guid().ToString();
-
+            var fine = string.Format("#Shame random {0} text @nominee", Guid.NewGuid());
+            var fineModel = new FineModel(fine);
+            
             //When 
-            shamefulService.NominateFine(fine);
+            shamefulService.NominateFine(fineModel);
             
             //Then
             var fines = shamefulService.GetFines(1, "PietPompiesDev");
-            var finePosted = fines.FirstOrDefault() == fine.ToString();
+            var finePosted = fines.First().RawTweet == fine;
 
             Assert.True(finePosted);
         }
@@ -80,13 +81,15 @@ namespace Shame.ShamefulLogic.Tests
             //Given
             const string unshamefullFine = " random text @nominee";
             const string unnominatedFine = "#Shame random text";
+            const string unshamefullyLongFine = "#Shame  @nominee random text wShame random text wShame random text w Shame random text w Shame random text w Shame random text w Shame random text w Shame random text w ";
 
             //When
             var unshamefullFineModel = new FineModel(unshamefullFine);
             var unnominatedFineModel = new FineModel(unnominatedFine);
-
+            var unshamefullyLongFineFineModel = new FineModel(unshamefullyLongFine);
+            
             //Then
-            var bothAreInvalid = unshamefullFineModel.IsValid && unnominatedFineModel.IsValid;
+            var bothAreInvalid = unshamefullFineModel.IsValid && unnominatedFineModel.IsValid && unshamefullyLongFineFineModel.IsValid;
 
             Assert.False(bothAreInvalid);
         }
@@ -117,8 +120,9 @@ namespace Shame.ShamefulLogic.Tests
         {
             //Given
             const string fineReason = "random text";
+            const string nominees = "@nominee3, @nominee2";
 
-            var shamefullFine = string.Format("#Shame {0} @nominee3", fineReason);
+            var shamefullFine = string.Format("#Shame {0} {1}", fineReason, nominees);
 
             //When
             var shamefullFineModel = new FineModel(shamefullFine);
@@ -127,6 +131,22 @@ namespace Shame.ShamefulLogic.Tests
             var hasShamingReason = shamefullFineModel.Reason.Equals(fineReason);
 
             Assert.True(hasShamingReason);
+        }
+
+        [Test]
+        public void CreateFine()
+        {
+            //Given
+            const string fineReason = "random text";
+            var nominees = (new[] { "@nominee1", "@nominee2", "@nominee3" }).ToList();
+
+            //When
+            var shamefullFineModel = new FineModel(fineReason, nominees);
+
+            //Then
+            var rawTweetIsCorrect = shamefullFineModel.RawTweet.Equals("#Shame random text @nominee1, @nominee2, @nominee3");
+
+            Assert.True(rawTweetIsCorrect && shamefullFineModel.IsValid);
         }
     }
 }

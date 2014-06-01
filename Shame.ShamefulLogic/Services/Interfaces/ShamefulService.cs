@@ -8,9 +8,9 @@ namespace Shame.ShamefulLogic
 {
     public interface IShamefulService
     {
-        void NominateFine(string fine);
+        void NominateFine(FineModel fine);
 
-        string[] GetFines(int count, string screenName);
+        List<FineModel> GetFines(int count, string screenName);
 
         List<string> GetFollowers(string screenName);
     }

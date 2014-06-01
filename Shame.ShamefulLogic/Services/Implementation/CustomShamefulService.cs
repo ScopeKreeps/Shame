@@ -8,12 +8,12 @@ namespace Shame.ShamefulLogic
 {
     public class CustomShamefulService : IShamefulService
     {
-        public void NominateFine(string fine)
+        public void NominateFine(FineModel fine)
         {
             throw new NotImplementedException();
         }
 
-        public string[] GetFines(int count, string screenName) 
+        public List<FineModel> GetFines(int count, string screenName) 
         {
             throw new NotImplementedException();
         }
