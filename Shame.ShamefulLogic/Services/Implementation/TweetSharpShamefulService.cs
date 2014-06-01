@@ -35,7 +35,9 @@ namespace Shame.ShamefulLogic
         {
             var service = GetAuthenticatedTwitterServices();
             return service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { ScreenName = screenName, Count = count })
-                .Select(x => new FineModel(x.Text)).ToList();
+                .Select(x => new FineModel(x.Text))
+                .Where(y=>y.IsValid)
+                .ToList();
         }
 
         public List<string> GetFollowers(string screenName)

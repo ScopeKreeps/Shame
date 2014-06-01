@@ -31,8 +31,7 @@ namespace Shame.ShamefulLogic.Tests
 
             Assert.True(finePosted);
         }
-
-
+        
         [Test]
         public void GetFines()
         {
