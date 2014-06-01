@@ -30,7 +30,7 @@ namespace Shame.ShamefulLogic
 
         public string[] GetFines(int count, string screenName)
         {
-            var service = GetAuthenticatedTwitterServices();
+            var service = GetAuthenticatedTwitterServices();           
             return service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions() { ScreenName = screenName, Count = count }).Select(x => x.Text).ToArray();
         }
 
